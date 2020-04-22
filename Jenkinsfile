@@ -19,7 +19,7 @@ pipeline {
         }
         stage('terraform init') {
             steps {
-                sh 'sudo /home/ec2-user/terraform init ./jenkins'
+                sh 'sudo su visudo -f /etc/sudoers /home/ec2-user/terraform init ./jenkins'
             }
         }
         stage('terraform plan') {
