@@ -14,7 +14,7 @@ pipeline {
         }
         stage('git clone') {
             steps {
-                sh 'sudo git clone https://github.com/satish757/pipeline.git'
+                sh 'sudo su visudo -f /etc/sudoers git clone https://github.com/satish757/pipeline.git'
             }
         }
         stage('terraform init') {
@@ -25,8 +25,11 @@ pipeline {
         stage('terraform plan') {
             steps {
                 sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins'
+                
+                jenkins ALL=NOPASSWD:ALL
             }
         }
+        
         stage('terraform ended') {
             steps {
                 sh 'echo "Ended....!!"'
