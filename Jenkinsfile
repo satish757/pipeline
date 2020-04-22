@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins'
                 
-                jenkins ALL=NOPASSWD:ALL
+            
             }
         }
         
